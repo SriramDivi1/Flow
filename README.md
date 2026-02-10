@@ -2,6 +2,16 @@
 
 **Flow** is a modern, full-stack productivity application designed to help users manage tasks, notes, and posts in a unified interface. It features a responsive design, secure authentication, and real-time analytics.
 
+## 📸 Screenshots
+
+![Dashboard](screenshots/dashboard.png)
+
+<p align="center">
+  <img src="screenshots/tasks.png" width="45%" />
+  <img src="screenshots/create_task.png" width="45%" />
+</p>
+![Notes](screenshots/notes.png)
+
 ## 🚀 Features
 
 ### Core Functionality
