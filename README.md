@@ -56,6 +56,18 @@
 
 <br />
 
+## ✨ Skills Demonstrated
+
+This project showcases the following technical competencies required for the **Frontend Developer Intern** role:
+
+- **Frontend Engineering**: Built with **React 19**, utilizing **Hooks** (`useAuth`, `useTheme`), **Context API** for global state, and **TailwindCSS** for responsive design.
+- **Backend Integration**: Implemented a robust **RESTful API** consumption layer using **Axios Interceptors** to handle JWT auto-refresh seamlessly.
+- **Security Best Practices**: Implemented **JWT Authentication**, password hashing (Bcrypt), and protected routes to secure sensitive data.
+- **Scalable Architecture**: Designed a decoupled client-server architecture with a focus on modularity and code reusability.
+- **DevOps**: Configured **Vercel** for production deployment and optimized build processes.
+
+<br />
+
 ## 🏗️ Project Architecture
 
 ### High-Level Design
