@@ -8,7 +8,7 @@ This document outlines the strategy for scaling the **Flow** application from a 
 
 - **Frontend**: React (SPA) served via `npm start` (webpack dev server).
 - **Backend**: FastAPI running on `uvicorn` (single worker).
-- **Database**: SQLite (local file).
+- **Database**: PostgreSQL (Supabase, single instance).
 - **Auth**: Local JWT handling.
 
 ### Target State (Production)
@@ -83,7 +83,7 @@ This document outlines the strategy for scaling the **Flow** application from a 
 
 ## Summary Checklist for Production Launch
 
-- [ ] Replace SQLite with PostgreSQL.
+- [ ] Configure PostgreSQL connection pooling for production.
 - [ ] Dockerize Backend.
 - [ ] Set up Nginx/ALB.
 - [ ] Deploy Frontend to Vercel/S3+CloudFront.
