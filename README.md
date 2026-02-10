@@ -2,10 +2,6 @@
 
 **Flow** is a modern, full-stack productivity application designed to help users manage tasks, notes, and posts in a unified interface. It features a responsive design, secure authentication, and real-time analytics.
 
-![Dashboard Preview](frontend/public/dashboard-preview.png)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSriramDivi1%2FFlow&env=DATABASE_URL,SECRET_KEY,ALGORITHM,ACCESS_TOKEN_EXPIRE_MINUTES)
-
 ## 🚀 Features
 
 ### Core Functionality
