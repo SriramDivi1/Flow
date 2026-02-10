@@ -194,5 +194,5 @@ npm start
 ---
 
 <p align="center">
-  Made with ❤️ by <strong>Sriram Naidu</strong> for the Full Stack Assignment.
+  Made with ❤️ by <strong>Sriram Divi</strong> for the Full Stack Assignment.
 </p>
