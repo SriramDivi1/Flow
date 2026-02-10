@@ -9,7 +9,7 @@ from sqlalchemy.pool import NullPool
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-DATABASE_URL = os.environ.get('postgresql://postgres.euumriuejbczhkfsffye:gR1V3T8qlAlEG5mh@aws-1-us-east-1.pooler.supabase.com:6543/postgres')
+DATABASE_URL = os.environ.get('DATABASE_URL')
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL environment variable is required")
 

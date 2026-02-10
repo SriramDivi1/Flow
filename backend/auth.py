@@ -11,7 +11,7 @@ from database import get_db
 from models import User
 from schemas import TokenData
 
-SECRET_KEY = os.environ.get('efc22ce7f104635630f6a6d7c7e8cb4bb4236bbe9920e3b7ea4454499243c36d')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 if not SECRET_KEY:
     raise RuntimeError("SECRET_KEY environment variable is required")
 
