@@ -42,15 +42,21 @@ limiter = Limiter(key_func=get_remote_address)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-# Mount uploads directory for static files
+# Mount uploads directory for static files (skip on read-only serverless)
 UPLOAD_DIR = ROOT_DIR / "uploads"
-UPLOAD_DIR.mkdir(exist_ok=True)
-app.mount("/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
+try:
+    UPLOAD_DIR.mkdir(exist_ok=True)
+    app.mount("/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
+except OSError:
+    pass  # Vercel has a read-only filesystem
 
-# CORS
+# CORS — allow both local dev and production
 ALLOWED_ORIGINS = [
-    os.environ.get('FRONTEND_URL', 'http://localhost:3000'),
+    'http://localhost:3000',
 ]
+frontend_url = os.environ.get('FRONTEND_URL', '')
+if frontend_url and frontend_url not in ALLOWED_ORIGINS:
+    ALLOWED_ORIGINS.append(frontend_url)
 
 app.add_middleware(
     CORSMiddleware,

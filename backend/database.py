@@ -1,8 +1,10 @@
 import os
+import ssl
 from pathlib import Path
 from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import declarative_base
+from sqlalchemy.pool import NullPool
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -13,19 +15,40 @@ if not DATABASE_URL:
 
 ASYNC_DATABASE_URL = DATABASE_URL.replace('postgresql://', 'postgresql+asyncpg://')
 
-engine = create_async_engine(
-    ASYNC_DATABASE_URL,
-    pool_size=10,
-    max_overflow=5,
-    pool_timeout=30,
-    pool_recycle=1800,
-    pool_pre_ping=True,
-    echo=False,
-    connect_args={
-        "statement_cache_size": 0,  # CRITICAL: Required for transaction pooler
-        "command_timeout": 30,
-    }
-)
+# Detect serverless environment (Vercel sets VERCEL=1)
+IS_SERVERLESS = bool(os.environ.get('VERCEL'))
+
+# Build connect_args — always require SSL for Supabase
+ssl_context = ssl.create_default_context()
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
+
+connect_args = {
+    "statement_cache_size": 0,
+    "command_timeout": 30,
+    "ssl": ssl_context,
+}
+
+if IS_SERVERLESS:
+    # Serverless: no persistent connection pool
+    engine = create_async_engine(
+        ASYNC_DATABASE_URL,
+        poolclass=NullPool,
+        echo=False,
+        connect_args=connect_args,
+    )
+else:
+    # Local dev: use connection pooling
+    engine = create_async_engine(
+        ASYNC_DATABASE_URL,
+        pool_size=10,
+        max_overflow=5,
+        pool_timeout=30,
+        pool_recycle=1800,
+        pool_pre_ping=True,
+        echo=False,
+        connect_args=connect_args,
+    )
 
 AsyncSessionLocal = async_sessionmaker(
     bind=engine,
