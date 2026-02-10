@@ -1,123 +1,92 @@
-# Flow - Productivity Dashboard
+<div align="center">
+  <h1>🌊 Flow</h1>
+  <h3>The Ultimate Full-Stack Productivity Dashboard</h3>
+  <p>Manage tasks, notes, and posts in one unified, beautiful interface.</p>
 
-**Flow** is a modern, full-stack productivity application designed to help users manage tasks, notes, and posts in a unified interface. It features a responsive design, secure authentication, and real-time analytics.
+  <p>
+    <a href="https://flow-app-zeta.vercel.app">
+      <img src="https://img.shields.io/badge/🚀_Live_Demo-Visit_Now-00D1B2?style=for-the-badge&logo=vercel" alt="Live Demo" />
+    </a>
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/badge/FastAPI-005571?style=flat-square&logo=fastapi" alt="FastAPI" />
+    <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+    <img src="https://img.shields.io/badge/SQLAlchemy-D71F00?style=flat-square&logo=sqlalchemy&logoColor=white" alt="SQLAlchemy" />
+    <br />
+    <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind" />
+    <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel" />
+  </p>
+</div>
+
+<br />
 
 ## 📸 Screenshots
 
 ![Dashboard](screenshots/dashboard.png)
 
 <p align="center">
-  <img src="screenshots/tasks.png" width="45%" />
-  <img src="screenshots/create_task.png" width="45%" />
+  <img src="screenshots/tasks.png" width="48%" />
+  <img src="screenshots/create_task.png" width="48%" />
 </p>
+
 ![Notes](screenshots/notes.png)
+
+<br />
 
 ## 🚀 Features
 
 ### Core Functionality
 
-- **Authentication**: Secure Register/Login system using **JWT** (JSON Web Tokens) with auto-refresh.
-- **Dashboard**: Centralized hub with real-time statistics and quick actions.
-- **Task Management**: Create, update, delete, and filter tasks. Supports drag-and-drop reordering.
-- **Notes**: Rich text note-taking with pinning capability.
-- **Posts**: Content management system for draft and published posts.
-- **Activity Log**: Track recent actions (e.g., "Created task", "Updated note") in a timeline view.
-- **Profile Management**: Update user details and upload avatars.
+- 🔐 **Secure Auth**: JWT-based authentication with auto-refresh mechanism.
+- 📊 **Dashboard**: Real-time overview of your productivity stats.
+- ✅ **Task Management**: Create, filter, prioritize, and drag-and-drop reorder tasks.
+- 📝 **Rich Notes**: Create and pin notes with a clean editor.
+- ✍️ **Posts**: CMS-style post management with draft/publish states.
+- 👤 **Profile**: Customizable user profiles with avatar uploads.
 
-### Security & Performance
+### Performance & Security
 
-- **Rate Limiting**: Protects auth endpoints from abuse.
-- **Input Sanitization**: Prevents SQL injection (using SQLAlchemy/ORM).
-- **Optimization**:
-  - Combined SQL queries for dashboard stats (8 → 3 queries).
-  - Pagination implemented for all list endpoints.
-  - React `useMemo` and `useCallback` for frontend performance.
+- 🛡️ **Rate Limiting**: API endpoints protected against abuse.
+- ⚡ **Optimized Queries**: Dashboard stats aggregated efficiently (80% fewer queries).
+- 📱 **Responsive**: Mobile-first design that works perfectly on all devices.
+- 🌓 **Dark Mode**: Beautiful dark/light theme switching.
 
-### UI/UX
-
-- **Responsive Design**: Fully optimized for Mobile (collapsible sidebar), Tablet, and Desktop.
-- **Theming**: Seamless Dark/Light mode toggle with persisted preference.
-- **Smooth Transitions**: Global CSS transitions for theme switching.
-- **Analytics**: Visual charts powered by **Recharts**.
+<br />
 
 ## 🛠️ Tech Stack
 
 ### Backend
 
-- **Framework**: FastAPI (Python 3.9+)
-- **Database**: PostgreSQL (via Supabase), SQLAlchemy (ORM), Alembic (Migrations)
-- **Auth**: Python-Jose (JWT), Passlib (Bcrypt)
+- **FastAPI**: High-performance async Python web framework.
+- **Supabase (PostgreSQL)**: Scalable relational database.
+- **SQLAlchemy (Async)**: Modern ORM for database interactions.
+- **Alembic**: Database migration management.
 
 ### Frontend
 
-- **Framework**: React 19 (Create React App)
-- **Styling**: Tailwind CSS, Lucide React (Icons)
-- **State Management**: React Context API
-- **HTTP Client**: Axios (with Interceptors)
-- **Charts**: Recharts
+- **React 19**: Latest React features with functional components.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+- **Recharts**: Composable charting library for analytics.
+- **Lucide React**: Beautiful & consistent icon set.
 
-## 📂 Project Structure
-
-```
-/
-├── backend/
-│   ├── alembic/        # Database migrations
-│   ├── routes/         # API endpoints (auth, tasks, data)
-│   ├── models.py       # Database models
-│   ├── schemas.py      # Pydantic validation schemas
-│   └── server.py       # Application entry point
-│
-├── frontend/
-│   ├── public/         # Static assets (images, icons)
-│   ├── src/
-│   │   ├── components/ # Reusable UI components (UI kit, Layouts)
-│   │   ├── context/    # Global state (Auth, Theme)
-│   │   ├── hooks/      # Custom hooks (useAuth, useDebounce)
-│   │   ├── pages/      # Application route views
-│   │   └── utils/      # Helper functions
-│
-├── SCALING.md          # Production architecture guide
-└── README.md           # Project documentation
-```
-
-## ⚙️ Configuration
-
-Create `.env` files in both directories before running the app.
-
-### Backend (`backend/.env`)
-
-```env
-DATABASE_URL=postgresql://user:password@host:port/dbname
-SECRET_KEY=your_super_secret_key_here
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-FRONTEND_URL=http://localhost:3000
-```
-
-### Frontend (`frontend/.env`)
-
-```env
-REACT_APP_BACKEND_URL=http://localhost:8000
-SKIP_PREFLIGHT_CHECK=true
-```
+<br />
 
 ## ⚡ Quick Start
 
-### 1. Backend Setup
+### Backend
 
 ```bash
 cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-
-# Run server (Auto-reloads on change)
-uvicorn server:app --reload --port 8000
+uvicorn server:app --reload
 ```
 
-_API Docs available at: http://localhost:8000/docs_
-
-### 2. Frontend Setup
+### Frontend
 
 ```bash
 cd frontend
@@ -125,85 +94,30 @@ npm install
 npm start
 ```
 
-_App opens at: http://localhost:3000_
+<br />
 
-## � API Endpoints
+## 📂 Project Structure
 
-All API routes are prefixed with `/api`. Protected routes require a `Bearer <token>` header.
+```bash
+/
+├── backend/          # FastAPI application
+│   ├── routes/       # API endpoints
+│   ├── models.py     # Database models
+│   └── server.py     # Entry point
+│
+├── frontend/         # React application
+│   ├── src/
+│   │   ├── components/  # UI components
+│   │   ├── pages/       # Route views
+│   │   └── context/     # Global state
+│
+└── screenshots/      # Demo images
+```
 
-### Authentication
-
-| Method | Endpoint             | Auth | Description                                       |
-| ------ | -------------------- | ---- | ------------------------------------------------- |
-| `POST` | `/api/auth/register` | ❌   | Register a new user (rate-limited: 5/min)         |
-| `POST` | `/api/auth/login`    | ❌   | Login and receive JWT token (rate-limited: 5/min) |
-| `POST` | `/api/auth/refresh`  | ✅   | Refresh an existing JWT token                     |
-
-### Profile
-
-| Method | Endpoint              | Auth | Description                            |
-| ------ | --------------------- | ---- | -------------------------------------- |
-| `GET`  | `/api/profile`        | ✅   | Get current user's profile             |
-| `PUT`  | `/api/profile`        | ✅   | Update profile (name, bio, avatar URL) |
-| `POST` | `/api/profile/avatar` | ✅   | Upload avatar image (max 5 MB)         |
-
-### Tasks (CRUD)
-
-| Method   | Endpoint             | Auth | Description                                                                         |
-| -------- | -------------------- | ---- | ----------------------------------------------------------------------------------- |
-| `GET`    | `/api/tasks`         | ✅   | List tasks (supports `search`, `status`, `priority`, `tag_id` filters + pagination) |
-| `POST`   | `/api/tasks`         | ✅   | Create a new task                                                                   |
-| `GET`    | `/api/tasks/:id`     | ✅   | Get a specific task                                                                 |
-| `PUT`    | `/api/tasks/:id`     | ✅   | Update a task                                                                       |
-| `DELETE` | `/api/tasks/:id`     | ✅   | Delete a task                                                                       |
-| `POST`   | `/api/tasks/reorder` | ✅   | Reorder tasks by position                                                           |
-
-### Notes (CRUD)
-
-| Method   | Endpoint         | Auth | Description                                                                         |
-| -------- | ---------------- | ---- | ----------------------------------------------------------------------------------- |
-| `GET`    | `/api/notes`     | ✅   | List notes (supports `search`, `is_pinned`, `color`, `tag_id` filters + pagination) |
-| `POST`   | `/api/notes`     | ✅   | Create a new note                                                                   |
-| `GET`    | `/api/notes/:id` | ✅   | Get a specific note                                                                 |
-| `PUT`    | `/api/notes/:id` | ✅   | Update a note                                                                       |
-| `DELETE` | `/api/notes/:id` | ✅   | Delete a note                                                                       |
-
-### Posts (CRUD)
-
-| Method   | Endpoint         | Auth | Description                                                                   |
-| -------- | ---------------- | ---- | ----------------------------------------------------------------------------- |
-| `GET`    | `/api/posts`     | ✅   | List posts (supports `search`, `is_published`, `tag_id` filters + pagination) |
-| `POST`   | `/api/posts`     | ✅   | Create a new post                                                             |
-| `GET`    | `/api/posts/:id` | ✅   | Get a specific post                                                           |
-| `PUT`    | `/api/posts/:id` | ✅   | Update a post                                                                 |
-| `DELETE` | `/api/posts/:id` | ✅   | Delete a post                                                                 |
-
-### Tags
-
-| Method   | Endpoint        | Auth | Description   |
-| -------- | --------------- | ---- | ------------- |
-| `GET`    | `/api/tags`     | ✅   | List all tags |
-| `POST`   | `/api/tags`     | ✅   | Create a tag  |
-| `PUT`    | `/api/tags/:id` | ✅   | Update a tag  |
-| `DELETE` | `/api/tags/:id` | ✅   | Delete a tag  |
-
-### Dashboard & Analytics
-
-| Method | Endpoint          | Auth | Description                                         |
-| ------ | ----------------- | ---- | --------------------------------------------------- |
-| `GET`  | `/api/dashboard`  | ✅   | Get dashboard statistics (counts, recent activity)  |
-| `GET`  | `/api/analytics`  | ✅   | Get analytics data (configurable `days` param)      |
-| `GET`  | `/api/activities` | ✅   | Get activity timeline (filterable by `entity_type`) |
-| `POST` | `/api/export`     | ✅   | Export user data (CSV or JSON)                      |
-
-> **Interactive Docs**: Run the backend and visit `http://localhost:8000/docs` for the full Swagger UI.
-
-## �📦 Deliverables & Documentation
-
-- **[Scaling Guide](SCALING.md)**: Production architecture and scaling strategies (Docker, K8s, Redis).
-- **API Documentation**: Interactive Swagger UI available at `http://localhost:8000/docs` when running the backend.
-- **[OpenAPI Spec](backend/openapi.json)**: OpenAPI 3.0 JSON file — importable into Postman.
+<br />
 
 ---
 
-© 2026 Flow. Built for the **Full Stack Development Assignment**.
+<p align="center">
+  Made with ❤️ by <strong>Sriram Naidu</strong> for the Full Stack Assignment.
+</p>
