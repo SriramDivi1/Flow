@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 180 20% 97%;
+    --foreground: 180 50% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 180 50% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 50% 8%;
+    --primary: 172 66% 50%;
+    --primary-foreground: 180 50% 8%;
+    --secondary: 180 15% 94%;
+    --secondary-foreground: 180 50% 15%;
+    --muted: 180 15% 94%;
+    --muted-foreground: 180 10% 45%;
+    --accent: 142 76% 46%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 180 15% 88%;
+    --input: 180 15% 88%;
+    --ring: 172 66% 50%;
+    --radius: 0.5rem;
+    --surface: 0 0% 100%;
+    --surface-highlight: 180 15% 94%;
+  }
+
+  .dark {
+    --background: 180 30% 8%;
+    --foreground: 180 15% 95%;
+    --card: 180 25% 12%;
+    --card-foreground: 180 15% 95%;
+    --popover: 180 25% 12%;
+    --popover-foreground: 180 15% 95%;
+    --primary: 172 66% 50%;
+    --primary-foreground: 180 50% 8%;
+    --secondary: 180 25% 15%;
+    --secondary-foreground: 180 15% 95%;
+    --muted: 180 25% 15%;
+    --muted-foreground: 180 15% 60%;
+    --accent: 142 76% 46%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 180 20% 20%;
+    --input: 180 20% 20%;
+    --ring: 172 66% 50%;
+    --surface: 180 25% 12%;
+    --surface-highlight: 180 20% 18%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    @apply backdrop-blur-xl bg-white/70 dark:bg-slate-900/70 border border-white/20 shadow-sm;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:opacity-90 rounded-full px-6 py-2.5 font-medium transition-all active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-card border border-border text-foreground hover:bg-muted rounded-full px-6 py-2.5 font-medium transition-all;
+  }
+
+  .btn-ghost {
+    @apply text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-md px-4 py-2 transition-all;
+  }
+
+  .input-field {
+    @apply bg-card border border-border rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all;
+  }
+
+  .card-task {
+    @apply bg-card border-l-4 border-l-primary border-y border-r border-border rounded-r-lg p-4 hover:translate-x-1 transition-transform;
+  }
+
+  .card-note {
+    @apply bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-shadow flex flex-col gap-2;
+  }
+
+  .card-post {
+    @apply bg-card border-b border-border p-6 first:rounded-t-xl last:rounded-b-xl last:border-b-0;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: "Outfit", sans-serif;
+  }
+
+  .font-body {
+    font-family: "Inter", sans-serif;
+  }
+
+  .font-mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s infinite ease-in-out;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+  }
+}

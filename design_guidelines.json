@@ -1,0 +1,118 @@
+{
+  "design_system": {
+    "identity": "Flow Design System",
+    "theme_strategy": "Soft Utility (Productivity Focus) with Dark/Light Toggle",
+    "typography": {
+      "headings": {
+        "font_family": "Outfit, sans-serif",
+        "weights": ["500", "700"],
+        "usage": "Use for all H1-H6. Tracking tight (-0.02em).",
+        "import_url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&display=swap"
+      },
+      "body": {
+        "font_family": "Inter, sans-serif",
+        "weights": ["400", "500"],
+        "usage": "Use for paragraphs, inputs, and data tables. Relaxed line-height."
+      },
+      "monospace": {
+        "font_family": "JetBrains Mono, monospace",
+        "usage": "Use for code snippets, API keys, or technical data."
+      }
+    },
+    "colors": {
+      "light_mode": {
+        "background": "#F8FAFC",
+        "surface": "#FFFFFF",
+        "surface_highlight": "#F1F5F9",
+        "text_primary": "#0F172A",
+        "text_secondary": "#64748B",
+        "border": "#E2E8F0",
+        "primary": "#6366F1",
+        "primary_foreground": "#FFFFFF",
+        "accent": "#A855F7"
+      },
+      "dark_mode": {
+        "background": "#0F172A",
+        "surface": "#1E293B",
+        "surface_highlight": "#334155",
+        "text_primary": "#F8FAFC",
+        "text_secondary": "#94A3B8",
+        "border": "#334155",
+        "primary": "#818CF8",
+        "primary_foreground": "#FFFFFF",
+        "accent": "#C084FC"
+      },
+      "palette_rules": [
+        "Never use pure black (#000000). Use Slate 900 (#0F172A) instead.",
+        "Primary color is for Actions only (Buttons, Links).",
+        "Use 'Surface Highlight' for hover states on cards/rows."
+      ]
+    },
+    "spacing": {
+      "scale": "Tailwind Default",
+      "philosophy": "Generous. Use p-6 or p-8 for cards. Gap-6 for grids.",
+      "container_padding": "px-4 md:px-8 lg:px-12"
+    },
+    "visual_enhancers": {
+      "glassmorphism": "backdrop-blur-xl bg-white/70 dark:bg-slate-900/70 border border-white/20 shadow-sm",
+      "neumorphism_card": "bg-surface border border-border shadow-sm hover:shadow-md transition-all duration-200",
+      "gradients": "Use subtle mesh gradients for hero backgrounds, never for text."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:opacity-90 rounded-full px-6 py-2.5 font-medium transition-transform active:scale-95",
+      "secondary": "bg-surface border border-border text-text-primary hover:bg-surface-highlight rounded-full px-6 py-2.5 font-medium",
+      "ghost": "text-text-secondary hover:text-primary hover:bg-primary/10 rounded-md px-4 py-2"
+    },
+    "cards": {
+      "task_card": "bg-surface border-l-4 border-l-primary border-y border-r border-border rounded-r-lg p-4 hover:translate-x-1 transition-transform",
+      "note_card": "bg-surface border border-border rounded-xl p-6 hover:shadow-lg transition-shadow flex flex-col gap-2",
+      "post_card": "bg-surface border-b border-border p-6 first:rounded-t-xl last:rounded-b-xl last:border-b-0"
+    },
+    "inputs": {
+      "style": "bg-surface border border-border rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+    }
+  },
+  "layout_strategies": {
+    "landing_page": {
+      "grid_mode": "Tetris Grid (Mode A)",
+      "hero_section": "Split layout: Left text (H1 + CTA), Right 3D Abstract Image. Background: Subtle mesh gradient.",
+      "features_section": "Bento Grid: Mix of large (col-span-2) and small (col-span-1) cards showing 'Tasks', 'Notes', 'Posts' features."
+    },
+    "dashboard": {
+      "grid_mode": "Bento Grid (Mode B - High Density)",
+      "structure": "Sidebar (Fixed Left) + Topbar (Search/Profile) + Main Content Area.",
+      "responsive": "Sidebar becomes Bottom Nav or Hamburger Menu on Mobile."
+    }
+  },
+  "assets": {
+    "images": [
+      {
+        "category": "hero_background",
+        "url": "https://images.unsplash.com/photo-1763259502804-449a0e88d641?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMDNkJTIwZ2xhc3MlMjBnZW9tZXRyaWMlMjBzaGFwZXMlMjBwdXJwbGUlMjBibHVlfGVufDB8fHx8MTc3MDcwMjQ0MXww&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract 3D dark shapes for Hero section background or visual anchor."
+      },
+      {
+        "category": "feature_workspace",
+        "url": "https://images.unsplash.com/photo-1544654262-e295983be0f4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwd29ya3NwYWNlJTIwb3JnYW5pemVkJTIwZGVza3xlbnwwfHx8fDE3NzA3MDI0MjV8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Minimalist workspace for 'Organize your life' feature section."
+      },
+      {
+        "category": "feature_abstract",
+        "url": "https://images.unsplash.com/photo-1763259012707-3a5e383e76d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMDNkJTIwZ2xhc3MlMjBnZW9tZXRyaWMlMjBzaGFwZXMlMjBwdXJwbGUlMjBibHVlfGVufDB8fHx8MTc3MDcwMjQ0MXww&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract spheres for 'Creative Freedom' or 'Notes' feature."
+      }
+    ],
+    "icons": "Use 'lucide-react' for all UI icons (Home, Settings, Edit, Trash, Plus, etc.)."
+  },
+  "guidelines": [
+    "Use asymmetric layouts, avoid generic centered designs.",
+    "Add hover:scale-105 or hover:bg-accent to all interactive elements.",
+    "Use the glassmorphism class for the Topbar and Modals.",
+    "Generous spacing - use p-6 or p-8 for cards.",
+    "Ensure text contrast - use Slate-400 for placeholders, Slate-900/50 for text.",
+    "Use data-testid on buttons, inputs, and cards.",
+    "No default gray backgrounds - use the tinted Slate colors."
+  ]
+}
