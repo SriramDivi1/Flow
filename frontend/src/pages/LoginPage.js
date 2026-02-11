@@ -36,12 +36,31 @@ export default function LoginPage() {
     if (!validate()) return;
 
     setLoading(true);
+    setErrors({}); // Clear previous errors
+
     try {
       await login(email, password);
       toast.success('Welcome back!');
       navigate('/dashboard');
     } catch (error) {
-      const message = error.response?.data?.detail || 'Login failed. Please try again.';
+      console.error('Login failed:', error);
+      let message = 'Login failed. Please try again.';
+
+      // Handle different error formats
+      if (error.response?.data?.detail) {
+        const detail = error.response.data.detail;
+        if (Array.isArray(detail)) {
+          // Flatten FastAPI validation errors
+          message = detail.map(err => err.msg).join('. ');
+        } else if (typeof detail === 'object') {
+          message = JSON.stringify(detail);
+        } else {
+          message = String(detail);
+        }
+      } else if (error.message) {
+        message = error.message;
+      }
+
       toast.error(message);
       setErrors({ submit: message });
     } finally {

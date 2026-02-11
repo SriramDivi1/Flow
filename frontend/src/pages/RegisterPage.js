@@ -27,12 +27,17 @@ export default function RegisterPage() {
     const newErrors = {};
     if (!fullName) newErrors.fullName = 'Full name is required';
     else if (fullName.length < 2) newErrors.fullName = 'Name must be at least 2 characters';
+    
     if (!email) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Invalid email format';
+    
     if (!password) newErrors.password = 'Password is required';
-    else if (password.length < 6) newErrors.password = 'Password must be at least 6 characters';
+    else if (password.length < 8) newErrors.password = 'Password must be at least 8 characters';
+    else if (!/(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)) newErrors.password = 'Password must contain at least one letter and one number';
+    
     if (!confirmPassword) newErrors.confirmPassword = 'Please confirm your password';
     else if (password !== confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -42,12 +47,31 @@ export default function RegisterPage() {
     if (!validate()) return;
 
     setLoading(true);
+    setErrors({}); // Clear previous errors
+    
     try {
       await register(email, password, fullName);
       toast.success('Account created successfully!');
       navigate('/dashboard');
     } catch (error) {
-      const message = error.response?.data?.detail || 'Registration failed. Please try again.';
+      console.error('Registration failed:', error);
+      let message = 'Registration failed. Please try again.';
+      
+      // Handle different error formats
+      if (error.response?.data?.detail) {
+        const detail = error.response.data.detail;
+        if (Array.isArray(detail)) {
+          // Flatten FastAPI validation errors
+          message = detail.map(err => err.msg).join('. ');
+        } else if (typeof detail === 'object') {
+          message = JSON.stringify(detail);
+        } else {
+          message = String(detail);
+        }
+      } else if (error.message) {
+        message = error.message;
+      }
+      
       toast.error(message);
       setErrors({ submit: message });
     } finally {
