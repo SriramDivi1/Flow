@@ -18,6 +18,12 @@ This document outlines the strategy for scaling the **Flow** application from a 
 - **Database**: Managed PostgreSQL (AWS RDS / Google Cloud SQL) with connection pooling.
 - **Cache**: Redis for session management and API response caching.
 
+### Frontend-Backend Integration Scaling
+
+- **API Gateway**: Use Nginx or Amazon API Gateway as a single entry point to handle rate limiting, SSL termination, and routing.
+- **Load Balancing**: Distribute incoming traffic across multiple backend instances to ensure high availability.
+- **CORS & Security**: Strict CORS policies and JWT validation at the gateway level to offload security checks from application logic.
+
 ---
 
 ## 2. Frontend Scaling
